@@ -1,7 +1,11 @@
 language: ruby
 rvm:
  - 2.7.0
-before_install:
-  - gem update --system
-  - gem install bundler
-  - gem install rake
+script:
+ - bundle update --bundler
+ - bundle exec rake db:migrate
+ - bundle exec rspec spec
+ - bundle exec cucumber
+branches:
+  only:
+  - master
